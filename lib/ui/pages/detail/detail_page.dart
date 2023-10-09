@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zubat/models/pokemon_detail.dart';
+import 'package:zubat/ui/pages/detail/bloc/detail_page_cubit.dart';
+import 'package:zubat/ui/pages/detail/bloc/detail_page_state.dart';
+import 'package:zubat/services/pokemon_service.dart';
+import 'package:zubat/ui/pages/detail/widgets/element_type_chip.dart';
+import 'package:zubat/ui/widgets/view_state_widget.dart';
 
 class DetailPage extends StatefulWidget {
   const DetailPage({
@@ -10,10 +17,7 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
-  @override
-  void initState() {
-    super.initState();
-  }
+  final _pokemonService = const PokemonService();
 
   void _onTapBack() {
     Navigator.of(context).pop();
@@ -21,6 +25,24 @@ class _DetailPageState extends State<DetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    return BlocProvider<DetailPageCubit>(
+      create: (_) {
+        return DetailPageCubit(
+          pokemonService: _pokemonService,
+        )..loadData();
+      },
+      child: BlocBuilder<DetailPageCubit, DetailPageState>(
+        builder: (context, snapshot) {
+          return ViewStateWidget(
+            state: snapshot.pokemonDetail,
+            onSuccess: _getContent,
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _getContent(PokemonDetail data) {
     return Scaffold(
       body: ListView(
         padding: EdgeInsets.zero,
@@ -32,14 +54,14 @@ class _DetailPageState extends State<DetailPage> {
                 height: MediaQuery.sizeOf(context).width,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/images/img_poison_header.png'),
+                    image: AssetImage(data.headerImagePath),
                     alignment: Alignment.topCenter,
                     fit: BoxFit.fitWidth,
                   ),
                 ),
                 alignment: Alignment.bottomCenter,
                 child: Image.network(
-                  'https://img.pokemondb.net/artwork/vector/zubat.png',
+                  data.imagePath,
                   width: MediaQuery.sizeOf(context).width * 0.64,
                   height: MediaQuery.sizeOf(context).width * 0.64,
                 ),
@@ -50,7 +72,7 @@ class _DetailPageState extends State<DetailPage> {
                 child: SafeArea(
                   child: IconButton(
                     onPressed: _onTapBack,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_back_ios_new,
                       color: Colors.white,
                     ),
@@ -65,15 +87,15 @@ class _DetailPageState extends State<DetailPage> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  'Zubat',
-                  style: TextStyle(
+                  data.name,
+                  style: const TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
                 const SizedBox(height: 6),
                 Text(
-                  '#041',
+                  data.pokedexNumber,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
@@ -84,32 +106,17 @@ class _DetailPageState extends State<DetailPage> {
                 Wrap(
                   spacing: 2,
                   runSpacing: 4,
-                  children: List.generate(9, (index) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        color: Color(0xffaa5599),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 4,
-                      ),
-                      child: Text(
-                        'Poison',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                        ),
-                      ),
-                    );
-                  }),
+                  children: data.types
+                      .map((e) => ElementTypeChip(
+                            backgroundColor: e.getBackgroundColor(),
+                            name: e.name,
+                          ))
+                      .toList(),
                 ),
                 const SizedBox(height: 12),
-                Text(
-                  'Zubat is a Poison/Flying type Pokémon introduced in Generation 1.',
-                ),
+                Text(data.description),
                 const SizedBox(height: 12),
-                Text(
+                const Text(
                   'Moves',
                   style: TextStyle(
                     fontSize: 16,
@@ -117,21 +124,17 @@ class _DetailPageState extends State<DetailPage> {
                   ),
                 ),
                 const SizedBox(height: 6),
-                ...['xxx', 'ssss', 'xxxx'].map(
+                ...data.moves.map(
                   (e) => Row(
                     children: [
                       Expanded(
                         flex: 2,
-                        child: Text(
-                          '1',
-                        ),
+                        child: Text("${e.learntLevel}"),
                       ),
                       const SizedBox(width: 4),
                       Expanded(
                         flex: 10,
-                        child: Text(
-                          e,
-                        ),
+                        child: Text(e.name),
                       ),
                     ],
                   ),

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zubat/const/app_images.dart';
-import 'package:zubat/services/pokemon_service.dart';
-
-import '../detail/detail_page.dart';
+import 'package:zubat/ui/pages/detail/detail_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,12 +10,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final pokemonService = const PokemonService();
-
   void _openDetail() {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (_) => DetailPage(),
+        builder: (_) => const DetailPage(),
       ),
     );
   }

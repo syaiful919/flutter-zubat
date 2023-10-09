@@ -1,0 +1,15 @@
+{
+    "name": "Zubat",
+    "description": "Zubat is a Poison/Flying type Pokémon introduced in Generation 1.",
+    "imagePath": "https://img.pokemondb.net/artwork/vector/zubat.png",
+    "types": [
+        "poison",
+        "flying"
+    ],
+    "moves": [
+        {
+            "learntLevel": 1,
+            "name": "Absorb"
+        }
+    ]
+}

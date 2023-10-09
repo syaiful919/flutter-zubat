@@ -3,6 +3,7 @@ import 'package:zubat/models/pokemon_type.dart';
 
 class PokemonDetail {
   final String name;
+  final String pokedexNumber;
   final String description;
   final List<PokemonType> types;
   final List<PokemonMove> moves;
@@ -11,6 +12,7 @@ class PokemonDetail {
 
   const PokemonDetail({
     required this.name,
+    required this.pokedexNumber,
     required this.description,
     required this.types,
     required this.moves,
@@ -24,6 +26,7 @@ class PokemonDetail {
 
     return PokemonDetail(
       name: json["name"],
+      pokedexNumber: json["pokedexNumber"],
       description: json["description"],
       types: List<PokemonType>.from(
         types.map((x) => x.getPokemonType()),

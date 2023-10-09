@@ -1,5 +1,6 @@
 {
     "name": "Zubat",
+    "pokedexNumber": "#041",
     "description": "Zubat is a Poison/Flying type Pokémon introduced in Generation 1.",
     "imagePath": "https://img.pokemondb.net/artwork/vector/zubat.png",
     "types": [
@@ -10,6 +11,46 @@
         {
             "learntLevel": 1,
             "name": "Absorb"
+        },
+        {
+            "learntLevel": 1,
+            "name": "Supersonic"
+        },
+        {
+            "learntLevel": 5,
+            "name": "Astonish"
+        },
+        {
+            "learntLevel": 10,
+            "name": "Mean Look"
+        }, {
+            "learntLevel": 15,
+            "name": "Poison Fang"
+        }, {
+            "learntLevel": 20,
+            "name": "Quick Guard"
+        }, {
+            "learntLevel": 25,
+            "name": "Air Cutter"
+        }, {
+            "learntLevel": 30,
+            "name": "Bite"
+        }, {
+            "learntLevel": 35,
+            "name": "Haze"
+        }, {
+            "learntLevel": 40,
+            "name": "Venoshock"
+        },
+        {
+            "learntLevel": 45,
+            "name": "Confuse Ray"
+        }, {
+            "learntLevel": 50,
+            "name": "Air Slash"
+        }, {
+            "learntLevel": 55,
+            "name": "Leech Life"
         }
     ]
 }

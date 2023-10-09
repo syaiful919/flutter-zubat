@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:zubat/const/app_images.dart';
 
 enum PokemonType {
@@ -11,6 +12,17 @@ enum PokemonType {
         return AppImages.poisonHeader;
       default:
         return '';
+    }
+  }
+
+  Color getBackgroundColor() {
+    switch (this) {
+      case PokemonType.poison:
+        return const Color(0xFFB567CE);
+      case PokemonType.flying:
+        return const Color(0xFF89AAE3);
+      default:
+        return Colors.white;
     }
   }
 }

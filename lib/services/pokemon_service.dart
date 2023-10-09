@@ -7,6 +7,8 @@ class PokemonService {
   const PokemonService();
 
   Future<PokemonDetail> getPokemonDetail(String id) async {
+    // simulate get data from network
+    await Future.delayed(const Duration(seconds: 2));
     final String jsonString =
         await rootBundle.loadString('assets/json/$id.json');
 

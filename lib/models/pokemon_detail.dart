@@ -38,4 +38,24 @@ class PokemonDetail {
       headerImagePath: firstType.getBackgroundHeaderPath(),
     );
   }
+
+  PokemonDetail copyWith({
+    String? name,
+    String? pokedexNumber,
+    String? description,
+    List<PokemonType>? types,
+    List<PokemonMove>? moves,
+    String? imagePath,
+    String? headerImagePath,
+  }) {
+    return PokemonDetail(
+      name: name ?? this.name,
+      pokedexNumber: pokedexNumber ?? this.pokedexNumber,
+      description: description ?? this.description,
+      types: types ?? this.types,
+      moves: moves ?? this.moves,
+      imagePath: imagePath ?? this.imagePath,
+      headerImagePath: headerImagePath ?? this.headerImagePath,
+    );
+  }
 }

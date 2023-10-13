@@ -4,6 +4,7 @@ import 'package:zubat/models/pokemon_detail.dart';
 import 'package:zubat/ui/pages/detail/bloc/detail_page_cubit.dart';
 import 'package:zubat/ui/pages/detail/bloc/detail_page_state.dart';
 import 'package:zubat/services/pokemon_service.dart';
+import 'package:zubat/ui/pages/detail/widgets/detail_page_shimmer.dart';
 import 'package:zubat/ui/pages/detail/widgets/element_type_chip.dart';
 import 'package:zubat/ui/widgets/view_state_widget.dart';
 
@@ -36,6 +37,7 @@ class _DetailPageState extends State<DetailPage> {
           return ViewStateWidget(
             state: snapshot.pokemonDetail,
             onSuccess: _getContent,
+            onLoading: () => const DetailPageShimmer(),
           );
         },
       ),

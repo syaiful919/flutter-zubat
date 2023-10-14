@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shorebird_code_push/shorebird_code_push.dart';
 import 'package:zubat/const/app_images.dart';
 import 'package:zubat/services/app_version_service.dart';
 import 'package:zubat/ui/pages/detail/detail_page.dart';
@@ -14,7 +15,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final _appVersionService = const AppVersionService();
+  final _appVersionService = AppVersionService(
+    codePush: ShorebirdCodePush(),
+  );
 
   void _openDetail() {
     Navigator.of(context).push(

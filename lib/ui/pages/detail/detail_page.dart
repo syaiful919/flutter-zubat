@@ -6,6 +6,7 @@ import 'package:zubat/ui/pages/detail/bloc/detail_page_state.dart';
 import 'package:zubat/services/pokemon_service.dart';
 import 'package:zubat/ui/pages/detail/widgets/detail_page_shimmer.dart';
 import 'package:zubat/ui/pages/detail/widgets/element_type_chip.dart';
+import 'package:zubat/ui/pages/detail/widgets/gender_bar.dart';
 import 'package:zubat/ui/widgets/view_state_widget.dart';
 
 class DetailPage extends StatefulWidget {
@@ -117,7 +118,19 @@ class _DetailPageState extends State<DetailPage> {
                 ),
                 const SizedBox(height: 12),
                 Text(data.description),
-                const SizedBox(height: 12),
+                const SizedBox(height: 24),
+                const Text(
+                  'Gender',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const SizedBox(height: 6),
+                GenderBar(
+                  percentage: data.genderPercentage,
+                ),
+                const SizedBox(height: 24),
                 const Text(
                   'Moves',
                   style: TextStyle(

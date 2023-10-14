@@ -45,7 +45,7 @@ class _DetailPageState extends State<DetailPage> {
   Widget _getContent(PokemonDetail data) {
     return Scaffold(
       body: ListView(
-        padding: EdgeInsets.zero,
+        padding: const EdgeInsets.only(bottom: 20),
         children: [
           Stack(
             children: [

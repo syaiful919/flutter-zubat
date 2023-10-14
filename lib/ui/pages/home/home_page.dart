@@ -41,15 +41,9 @@ class _HomePageState extends State<HomePage> {
             body: Stack(
               children: [
                 Center(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Image.asset(AppImages.zubat),
-                      TextButton(
-                        onPressed: _openDetail,
-                        child: const Text('Open'),
-                      ),
-                    ],
+                  child: GestureDetector(
+                    onTap: _openDetail,
+                    child: Image.asset(AppImages.zubat),
                   ),
                 ),
                 Positioned(

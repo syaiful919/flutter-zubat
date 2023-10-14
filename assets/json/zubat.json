@@ -7,6 +7,10 @@
         "poison",
         "flying"
     ],
+    "genderPercentage": {
+        "male": 50.0,
+        "female": 50.0
+    },
     "moves": [
         {
             "learntLevel": 1,
@@ -23,32 +27,40 @@
         {
             "learntLevel": 10,
             "name": "Mean Look"
-        }, {
+        },
+        {
             "learntLevel": 15,
             "name": "Poison Fang"
-        }, {
+        },
+        {
             "learntLevel": 20,
             "name": "Quick Guard"
-        }, {
+        },
+        {
             "learntLevel": 25,
             "name": "Air Cutter"
-        }, {
+        },
+        {
             "learntLevel": 30,
             "name": "Bite"
-        }, {
+        },
+        {
             "learntLevel": 35,
             "name": "Haze"
-        }, {
+        },
+        {
             "learntLevel": 40,
             "name": "Venoshock"
         },
         {
             "learntLevel": 45,
             "name": "Confuse Ray"
-        }, {
+        },
+        {
             "learntLevel": 50,
             "name": "Air Slash"
-        }, {
+        },
+        {
             "learntLevel": 55,
             "name": "Leech Life"
         }

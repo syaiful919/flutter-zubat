@@ -1,3 +1,4 @@
+import 'package:zubat/models/gender_percentage.dart';
 import 'package:zubat/models/pokemon_move.dart';
 import 'package:zubat/models/pokemon_type.dart';
 
@@ -9,6 +10,7 @@ class PokemonDetail {
   final List<PokemonMove> moves;
   final String imagePath;
   final String headerImagePath;
+  final GenderPercentage genderPercentage;
 
   const PokemonDetail({
     required this.name,
@@ -18,6 +20,7 @@ class PokemonDetail {
     required this.moves,
     required this.imagePath,
     required this.headerImagePath,
+    required this.genderPercentage,
   });
 
   factory PokemonDetail.fromJson(Map<String, dynamic> json) {
@@ -36,6 +39,7 @@ class PokemonDetail {
       ),
       imagePath: json["imagePath"],
       headerImagePath: firstType.getBackgroundHeaderPath(),
+      genderPercentage: GenderPercentage.fromJson(json["genderPercentage"]),
     );
   }
 
@@ -47,6 +51,7 @@ class PokemonDetail {
     List<PokemonMove>? moves,
     String? imagePath,
     String? headerImagePath,
+    GenderPercentage? genderPercentage,
   }) {
     return PokemonDetail(
       name: name ?? this.name,
@@ -56,6 +61,7 @@ class PokemonDetail {
       moves: moves ?? this.moves,
       imagePath: imagePath ?? this.imagePath,
       headerImagePath: headerImagePath ?? this.headerImagePath,
+      genderPercentage: genderPercentage ?? this.genderPercentage,
     );
   }
 }

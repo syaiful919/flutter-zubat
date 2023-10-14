@@ -16,7 +16,7 @@ class AppVersionService {
       final int? currentPatchversion = await codePush.currentPatchNumber();
 
       if (currentPatchversion != null) {
-        appVersion = '$appVersion - $currentPatchversion';
+        appVersion = '$appVersion - patch $currentPatchversion';
       }
 
       return appVersion;
